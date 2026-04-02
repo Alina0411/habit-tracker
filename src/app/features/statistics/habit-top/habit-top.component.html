@@ -1,0 +1,18 @@
+<div class="top-list">
+  @if (hasNoTopHabits$ | async) {
+    <div class="top-empty">
+      <mat-icon>local_fire_department</mat-icon>
+      <p>Пока нет серии выполнений подряд</p>
+    </div>
+  } @else {
+    <ul class="top-items">
+      @for (habit of topHabits$ | async; track habit.id; let i = $index) {
+        <li class="top-item">
+          <span class="top-rank">{{ i + 1 }}</span>
+          <span class="top-name">{{ habit.title }}</span>
+          <span class="top-badge">{{ habit.streak | declension: 'day' }} подряд</span>
+        </li>
+      }
+    </ul>
+  }
+</div>

@@ -1,0 +1,29 @@
+<mat-card class="cal-card">
+  <mat-calendar [dateClass]="customDateClass" [(selected)]="selected"
+                (selectedChange)="onDateSelected($event)"></mat-calendar>
+</mat-card>
+
+@if (showStats()) {
+  <div class="cal-stats">
+    <div class="cal-stats-header">
+      <span class="cal-stats-date">{{ selectedDate | date: 'd MMMM' }}</span>
+    </div>
+
+    @if (habitsBySelectedDate.length > 0) {
+      <ul class="stats-list">
+        @for (item of habitsBySelectedDate; track item.habit.id) {
+          <li class="stats-item" [class.done]="item.done" [class.missed]="!item.done">
+            <span class="stats-dot"></span>
+            <span class="stats-name">{{ item.habit.title }}</span>
+            <span class="stats-status">{{ item.done ? 'Выполнена' : 'Пропущена' }}</span>
+          </li>
+        }
+      </ul>
+    } @else {
+      <div class="stats-empty">
+        <mat-icon>event_busy</mat-icon>
+        <p>На этот день нет привычек</p>
+      </div>
+    }
+  </div>
+}

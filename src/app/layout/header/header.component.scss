@@ -1,0 +1,190 @@
+:host {
+  display: block;
+}
+
+.header {
+  background: var(--gradient-primary);
+  border-radius: 20px;
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-primary);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.14) 0%, transparent 100%);
+    pointer-events: none;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .header-brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    position: relative;
+    z-index: 1;
+
+    .brand-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      backdrop-filter: blur(8px);
+
+      mat-icon {
+        color: #fff;
+        font-size: 22px;
+        width: 22px;
+        height: 22px;
+      }
+    }
+
+    .brand-text {
+      .header-title {
+        font-size: var(--font-size-lg);
+        font-weight: 700;
+        color: #fff;
+        margin: 0;
+        line-height: 1.2;
+        letter-spacing: -0.3px;
+      }
+
+      .header-subtitle {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.72);
+        margin: 2px 0 0;
+        font-weight: 400;
+      }
+    }
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    position: relative;
+    z-index: 1;
+
+    .btn-theme-toggle {
+      width: 38px;
+      height: 38px;
+      min-width: 38px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 50%;
+      color: #fff;
+      transition: background 0.2s ease, transform 0.15s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(8px);
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.24);
+        transform: rotate(20deg);
+      }
+
+      mat-icon {
+        font-size: 18px;
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    .btn-add {
+      background: rgba(255, 255, 255, 0.18);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 12px;
+      padding: 9px 20px;
+      font-weight: 600;
+      font-size: var(--font-size-sm);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+      backdrop-filter: blur(8px);
+      letter-spacing: 0.01em;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.28);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      }
+
+      mat-icon {
+        font-size: 16px;
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    .btn-back {
+      color: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 12px;
+      padding: 8px 18px;
+      font-weight: 600;
+      font-size: var(--font-size-sm);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.12);
+      transition: background 0.2s ease, transform 0.15s ease;
+      backdrop-filter: blur(8px);
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.22);
+        transform: translateX(-2px);
+      }
+
+      mat-icon {
+        font-size: 16px;
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+}
+
+html.dark .header {
+  box-shadow: 0 10px 40px rgba(124, 58, 237, 0.45), 0 1px 0 rgba(255,255,255,0.06);
+}
+
+@media (max-width: 640px) {
+  .header {
+    flex-direction: column;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    text-align: center;
+    border-radius: 16px;
+
+    .header-brand {
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .header-actions {
+      width: 100%;
+      justify-content: center;
+
+      .btn-add, .btn-back {
+        flex: 1;
+        justify-content: center;
+      }
+    }
+  }
+}

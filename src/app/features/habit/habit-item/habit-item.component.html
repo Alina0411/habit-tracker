@@ -1,0 +1,23 @@
+@if (habit; as habit) {
+  <div class="habit-item">
+    <div class="habit-item--left">
+      <label class="custom-checkbox">
+        <input type="checkbox" [checked]="habit.history[today]" (change)="onToggleCompleted($event)"/>
+        <span class="checkmark"></span>
+      </label>
+      <span class="habit-name">{{ habit.title }}</span>
+    </div>
+
+    <div class="habit-actions">
+      <button class="action-btn" type="button" (click)="editHabit()" aria-label="Редактировать">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button class="action-btn danger" type="button" (click)="onDelete()" aria-label="Удалить">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <a class="action-btn link" [routerLink]="[habit.id]" aria-label="Подробнее">
+        <mat-icon>chevron_right</mat-icon>
+      </a>
+    </div>
+  </div>
+}

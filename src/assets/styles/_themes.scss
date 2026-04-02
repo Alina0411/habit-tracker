@@ -1,0 +1,97 @@
+:root {
+  --color-primary:       #6366f1;
+  --color-primary-dark:  #7c3aed;
+  --color-primary-light: #a5b4fc;
+
+  --gradient-primary: linear-gradient(135deg, #7c3aed 0%, #6366f1 100%);
+  --gradient-success: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+
+  --gradient-bg:
+    radial-gradient(ellipse at 15% 18%, rgba(216, 180, 254, 0.75) 0%, transparent 48%),
+    radial-gradient(ellipse at 82% 8%,  rgba(147, 197, 253, 0.60) 0%, transparent 44%),
+    radial-gradient(ellipse at 6%  80%, rgba(167, 139, 250, 0.55) 0%, transparent 44%),
+    radial-gradient(ellipse at 88% 88%, rgba(110, 231, 183, 0.60) 0%, transparent 44%),
+    radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.25) 0%, transparent 60%),
+    linear-gradient(160deg, #f8f4ff 0%, #eef2ff 35%, #dff0ff 65%, #ddfff4 100%);
+
+  --color-background:    #eef2ff;
+  --color-surface:       rgba(255, 255, 255, 0.48);
+  --color-surface-solid: #ffffff;
+  --color-card:          rgba(255, 255, 255, 0.48);
+  --color-glass:         rgba(255, 255, 255, 0.38);
+  --color-white:         #ffffff;
+  --color-light:         #eef2ff;
+
+  --color-text:           #1e293b;
+  --color-text-secondary: #64748b;
+  --color-muted-text:     #94a3b8;
+  --color-dark:           #1e293b;
+  --color-gray:           #64748b;
+
+  --color-success:    #22c55e;
+  --color-success-bg: rgba(34, 197, 94, 0.1);
+  --color-danger:     #ef4444;
+  --color-danger-bg:  rgba(239, 68, 68, 0.06);
+  --color-warning:    #f59e0b;
+  --color-info:       #06b6d4;
+
+  --color-border:        rgba(99, 102, 241, 0.14);
+  --color-border-subtle: rgba(99, 102, 241, 0.08);
+  --color-border-glass:  rgba(255, 255, 255, 0.60);
+
+  --shadow:         0 1px 3px rgba(99, 102, 241, 0.06);
+  --shadow-card:    0 8px 32px rgba(99, 102, 241, 0.10), 0 1px 4px rgba(0, 0, 0, 0.04);
+  --shadow-hover:   0 20px 44px rgba(99, 102, 241, 0.16), 0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-primary: 0 10px 30px rgba(124, 58, 237, 0.35), 0 4px 12px rgba(99, 102, 241, 0.2);
+  --shadow-inset:   inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+html.dark {
+  --color-primary:       #8b5cf6;
+  --color-primary-dark:  #7c3aed;
+  --color-primary-light: #c4b5fd;
+
+  --gradient-primary: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
+  --gradient-success: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+
+  --gradient-bg:
+    radial-gradient(ellipse at 4%  42%, rgba(138, 28, 230, 0.92) 0%, transparent 48%),
+    radial-gradient(ellipse at 18% 8%,  rgba(110, 20, 200, 0.75) 0%, transparent 44%),
+    radial-gradient(ellipse at 2%  80%, rgba(120, 30, 210, 0.70) 0%, transparent 42%),
+    radial-gradient(ellipse at 72% 48%, rgba(28, 195, 95,  0.72) 0%, transparent 46%),
+    radial-gradient(ellipse at 88% 18%, rgba(14, 110, 100, 0.55) 0%, transparent 40%),
+    radial-gradient(ellipse at 85% 82%, rgba(20, 150, 70,  0.45) 0%, transparent 38%),
+    radial-gradient(ellipse at 42% 50%, rgba(25, 55,  95,  0.50) 0%, transparent 52%),
+    linear-gradient(160deg, #060210 0%, #08041a 25%, #050d18 55%, #030a10 100%);
+
+  --color-background:    #0f172a;
+  --color-surface:       rgba(15, 23, 42, 0.55);
+  --color-surface-solid: #1e293b;
+  --color-card:          rgba(15, 23, 42, 0.55);
+  --color-glass:         rgba(15, 23, 42, 0.45);
+  --color-white:         #1e293b;
+  --color-light:         #0f172a;
+
+  --color-text:           #e2e8f0;
+  --color-text-secondary: #94a3b8;
+  --color-muted-text:     #64748b;
+  --color-dark:           #e2e8f0;
+  --color-gray:           #94a3b8;
+
+  --color-success:    #4ade80;
+  --color-success-bg: rgba(74, 222, 128, 0.12);
+  --color-danger:     #f87171;
+  --color-danger-bg:  rgba(248, 113, 113, 0.08);
+  --color-warning:    #fbbf24;
+  --color-info:       #22d3ee;
+
+  --color-border:        rgba(255, 255, 255, 0.08);
+  --color-border-subtle: rgba(255, 255, 255, 0.05);
+  --color-border-glass:  rgba(255, 255, 255, 0.10);
+
+  --shadow:         0 1px 4px rgba(0, 0, 0, 0.4);
+  --shadow-card:    0 8px 32px rgba(0, 0, 0, 0.40), 0 1px 4px rgba(139, 92, 246, 0.08);
+  --shadow-hover:   0 20px 44px rgba(0, 0, 0, 0.55), 0 4px 12px rgba(139, 92, 246, 0.18);
+  --shadow-primary: 0 10px 30px rgba(139, 92, 246, 0.4), 0 4px 12px rgba(139, 92, 246, 0.2);
+  --shadow-inset:   inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}

@@ -1,0 +1,36 @@
+<div class="challenge">
+  <div class="challenge-header">
+    <div class="challenge-title">
+      <mat-icon class="challenge-icon">flag</mat-icon>
+      <span>Марафон</span>
+    </div>
+    <div class="challenge-tabs">
+      <button class="tab" [class.active]="selectedTab === 'active'" (click)="selectedTab = 'active'">
+        Активные
+      </button>
+      <button class="tab" [class.active]="selectedTab === 'archived'" (click)="selectedTab = 'archived'">
+        Архив
+      </button>
+    </div>
+  </div>
+
+  <div class="challenge-list">
+    @for (habit of habits$ | async; track habit.id) {
+      <div class="challenge-item">
+        <div class="challenge-item-top">
+          <span class="challenge-name">{{ habit.title }}</span>
+          <span class="challenge-badge">{{ getColorPercent(habit.progress) }}</span>
+        </div>
+        <div class="challenge-track">
+          <div class="challenge-fill" [style.width]="getColorPercent(habit.progress)"></div>
+        </div>
+        <span class="challenge-days">{{ habit.progress.doneDays }} из {{ habit.progress.totalDays }} дн.</span>
+      </div>
+    } @empty {
+      <div class="challenge-empty">
+        <mat-icon class="challenge-empty-icon">{{ selectedTab === 'active' ? 'eco' : 'emoji_events' }}</mat-icon>
+        <p>{{ selectedTab === 'active' ? 'Нет активных привычек с дедлайном' : 'Нет завершённых привычек' }}</p>
+      </div>
+    }
+  </div>
+</div>

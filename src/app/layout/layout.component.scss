@@ -1,0 +1,33 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: transparent;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.app-shell {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: var(--space-lg);
+  min-height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+
+  @media (max-width: 768px) {
+    padding: var(--space-md);
+    gap: var(--space-md);
+  }
+
+  @media (max-width: 400px) {
+    padding: var(--space-sm);
+    gap: var(--space-sm);
+  }
+}
+
+.workspace {
+  background: transparent;
+  flex: 1;
+}

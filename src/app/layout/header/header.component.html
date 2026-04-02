@@ -1,0 +1,33 @@
+<header class="header">
+  <div class="header-brand">
+    <div class="brand-icon">
+      <mat-icon>psychology</mat-icon>
+    </div>
+    <div class="brand-text">
+      <h1 class="header-title">Трекер привычек</h1>
+      <p class="header-subtitle">Создавайте лучшую версию себя</p>
+    </div>
+  </div>
+
+  <div class="header-actions">
+    <button
+      mat-icon-button
+      class="btn-theme-toggle"
+      (click)="themeService.toggle()"
+      [attr.aria-label]="themeService.isDark() ? 'Светлая тема' : 'Тёмная тема'">
+      <mat-icon>{{ themeService.isDark() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+    </button>
+
+    @if (isHomePage()) {
+      <button mat-raised-button (click)="openAddHabitDialog()" class="btn-add">
+        <mat-icon>add</mat-icon>
+        Добавить привычку
+      </button>
+    } @else {
+      <button mat-button routerLink="/habits" class="btn-back">
+        <mat-icon>arrow_back</mat-icon>
+        Назад
+      </button>
+    }
+  </div>
+</header>

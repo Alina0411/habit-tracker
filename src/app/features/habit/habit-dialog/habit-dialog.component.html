@@ -1,0 +1,59 @@
+<div class="dialog-container">
+  <div class="dialog-header">
+    <div class="dialog-icon">{{ isEditMode ? '✏️' : '➕' }}</div>
+    <div>
+      <h2 class="dialog-title" mat-dialog-title>{{ title }}</h2>
+      <p class="dialog-subtitle">
+        {{ isEditMode ? 'Измените параметры привычки' : 'Создайте новую привычку' }}
+      </p>
+    </div>
+  </div>
+
+  <mat-dialog-content>
+    <form [formGroup]="form" (ngSubmit)="saveHabit()" class="habit-form">
+      <div class="form-field">
+        <label class="field-label" for="habit-title">Название</label>
+        <mat-form-field appearance="outline" class="full-width">
+          <input
+            matInput
+            id="habit-title"
+            formControlName="title"
+            placeholder="Например, «Пить воду», «Читать 15 минут»"
+            autocomplete="off"
+          />
+          @if (form.get('title')?.hasError('required')) {
+            <mat-error>Обязательное поле</mat-error>
+          }
+        </mat-form-field>
+      </div>
+
+      <div class="form-field">
+        <label class="field-label" for="habit-dataEnd">
+          Дата окончания <span class="optional">— необязательно</span>
+        </label>
+        <mat-form-field appearance="outline" class="full-width">
+          <input
+            matInput
+            type="date"
+            id="habit-dataEnd"
+            formControlName="dateEnd"
+            [min]="minDateStr"
+            autocomplete="off"
+          />
+          @if (form.get('dateEnd')?.hasError('minDate')) {
+            <mat-error>Дата не может быть в прошлом</mat-error>
+          }
+        </mat-form-field>
+      </div>
+
+      <div class="form-actions">
+        <button mat-button mat-dialog-close type="button" class="btn-cancel">
+          Отмена
+        </button>
+        <button mat-raised-button type="submit" [disabled]="form.invalid" class="btn-save">
+          {{ isEditMode ? 'Сохранить' : 'Создать' }}
+        </button>
+      </div>
+    </form>
+  </mat-dialog-content>
+</div>

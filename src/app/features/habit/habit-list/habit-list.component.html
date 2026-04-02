@@ -1,0 +1,27 @@
+@if (loading$ | async) {
+  <div class="list-loading">
+    <mat-spinner [diameter]="28"></mat-spinner>
+  </div>
+} @else {
+  <div class="list-header">
+    <span class="list-title">Привычки на сегодня</span>
+  </div>
+
+  @if (habits$ | async; as habits) {
+    @if (habits.length > 0) {
+      @for (habit of habits; track habit.id) {
+        <app-habit-item
+          [habit]="habit"
+          (delete)="onDeleteHabit($event)"
+          (edit)="onChangeHabit($event)"
+          (updateCompletedToday)="onUpdateCompletedToday($event)"
+        ></app-habit-item>
+      }
+    } @else {
+      <div class="list-empty">
+        <mat-icon>eco</mat-icon>
+        <p>Пока нет привычек.<br>Добавьте первую!</p>
+      </div>
+    }
+  }
+}

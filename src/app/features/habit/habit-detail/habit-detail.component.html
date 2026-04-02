@@ -1,0 +1,89 @@
+@if (habit) {
+  <div class="habit-detail">
+    <div class="habit-header">
+      <div class="habit-title-card">
+        <div class="title-content">
+          <h1 class="habit-title">{{ habit.title }}</h1>
+          <div class="habit-meta">
+            <span class="meta-item">
+              <mat-icon>schedule</mat-icon>
+              Создано: {{ habit.createdAt | date:'mediumDate' }}
+            </span>
+            <span class="meta-item">
+              <mat-icon>local_fire_department</mat-icon>
+              Выполнено дней подряд: {{ habit.streak }} дней
+            </span>
+          </div>
+        </div>
+        <div class="habit-status">
+          @if (habit.endDate) {
+            <div class="status-badge" [class.active]="habit.endDate >= today" [class.expired]="habit.endDate < today">
+              <mat-icon>{{ habit.endDate >= today ? 'timer' : 'timer_off' }}</mat-icon>
+              {{ habit.endDate >= today ? 'Активна' : 'Завершена' }}
+            </div>
+            <p class="end-date">До {{ habit.endDate | date:'mediumDate' }}</p>
+          } @else {
+            <div class="status-badge permanent">
+              <mat-icon>all_inclusive</mat-icon>
+              Бессрочная
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+
+
+    <div class="habit-detail--content">
+      <div class="history-section">
+        <div class="section-header">
+          <h2>История выполнения</h2>
+          <p>Отслеживайте свой прогресс по дням</p>
+        </div>
+        <app-calendar
+          [habitItem]="habit"
+          [showStats]="false"
+        >
+
+        </app-calendar>
+
+
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <mat-icon>trending_up</mat-icon>
+          </div>
+          <div class="stat-content">
+            <h3>{{ habit.streak }}</h3>
+            <p>Дней подряд</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">
+            <mat-icon>calendar_today</mat-icon>
+          </div>
+          <div class="stat-content">
+            <h3>{{ getHistory(habit).length }}</h3>
+            <p>Всего записей</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">
+            <mat-icon>check_circle</mat-icon>
+          </div>
+          <div class="stat-content">
+            <h3>{{ getCompletedCount(habit) }}</h3>
+            <p>Выполнено</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+} @else {
+  <div class="loading-state">
+    <mat-spinner diameter="40"></mat-spinner>
+    <p>Загрузка данных привычки...</p>
+  </div>
+}
